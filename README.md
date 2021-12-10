@@ -1,12 +1,12 @@
-# ToDoList
-a simple python app to help me keep track of all the things I need to do
+# 1*man helpdesk
+Simple ticket management for the tech riding solo
 
 
 ### Prerequisites
 
 ```
 Python 3.x
-PyQt5
+PySide2
 ```
 
 ## License

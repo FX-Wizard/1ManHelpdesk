@@ -1,3 +1,4 @@
+import os
 import sqlite3
 import datetime
 
@@ -7,11 +8,14 @@ class ToDoDB:
 
         self.dbName = dbName
 
+        # if not os.path.exists(dbName):
+        #     self.createNewDB()
+
         try:
             self.db = sqlite3.connect(dbName)
             self.cur = self.db.cursor()
         except:
-            print("cannot connect to DB: " + dbName)
+            raise Exception("cannot connect to DB: {}".format(dbName))
 
 
     def saveDB(self):
@@ -65,7 +69,7 @@ class ToDoDB:
             self.cur.execute("CREATE TABLE List (Id INT, title TEXT, datetime INT, body TEXT, status TEXT, priority TEXT)")
             self.cur.execute("CREATE TABLE journal (Id INT, title TEXT, datetime INT, body TEXT)")
         except:
-            print("error")
+            raise Exception("ERROR: Failed to create new database")
 
 
     def getDateTime(self):
